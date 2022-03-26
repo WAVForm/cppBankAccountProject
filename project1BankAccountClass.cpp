@@ -581,9 +581,11 @@ home:system("cls");
 			cin >> sl;
 			if (sl == 1) {
 				checkingClients[l - 1].withdraw();
+				goto edit;
 			}
 			else if (sl == 2) {
 				checkingClients[l - 1].writeCheck();
+				goto edit;
 			}
 			else if (sl == 3) {
 				checkingClients[l - 1].deposit();
@@ -599,9 +601,11 @@ home:system("cls");
 			cin >> sl;
 			if (sl == 1) {
 				savingsClients[l - 1].withdraw();
+				goto edit;
 			}
 			else if (sl == 2) {
 				savingsClients[l - 1].deposit();
+				goto edit;
 			}
 			else if (sl == 0) {
 				goto home;
