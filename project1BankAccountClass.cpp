@@ -569,51 +569,55 @@ home:system("cls");
 		int l = 0;
 		cout << "Enter The Row Number Of The Account: ";
 		cin >> l;
-		system("cls");
-		bankAccount::drawHeader("editor"); // draws the header
-
-		clients[l - 1].drawAccountEditing(l);
-
-		if (clients[l - 1].getAccountType() == "CHECKING") {
-			int sl = 0;
-			cout << "  ^-_[1]Withdraw" << "  ^-_[2]Write a Check" << "  ^-_[3]Deposit" << "  ^-_[0] Return to Homepage";
-			cout << endl << "Selection: ";
-			cin >> sl;
-			if (sl == 1) {
-				checkingClients[l - 1].withdraw();
-				goto edit;
-			}
-			else if (sl == 2) {
-				checkingClients[l - 1].writeCheck();
-				goto edit;
-			}
-			else if (sl == 3) {
-				checkingClients[l - 1].deposit();
-			}
-			else if (sl == 0) {
-				goto home;
-			}
-		}
-		else if (clients[l - 1].getAccountType() == "SAVINGS") {
-			int sl = 0;
-			cout << "  ^-_[1]Withdraw" << "  ^-_[2]Deposit" << "  ^-_[0] Return to Homepage";
-			cout << endl << "Selection: ";
-			cin >> sl;
-			if (sl == 1) {
-				savingsClients[l - 1].withdraw();
-				goto edit;
-			}
-			else if (sl == 2) {
-				savingsClients[l - 1].deposit();
-				goto edit;
-			}
-			else if (sl == 0) {
-				goto home;
-			}
-
+		if (l > ACCOUNT_AMOUNT || l <= 0) {
 			goto edit;
 		}
+		else if (l <= ACCOUNT_AMOUNT && l > 0) {
+			system("cls");
+			bankAccount::drawHeader("editor"); // draws the header
 
+			clients[l - 1].drawAccountEditing(l);
+
+			if (clients[l - 1].getAccountType() == "CHECKING") {
+				int sl = 0;
+				cout << "  ^-_[1]Withdraw" << "  ^-_[2]Write a Check" << "  ^-_[3]Deposit" << "  ^-_[0] Return to Homepage";
+				cout << endl << "Selection: ";
+				cin >> sl;
+				if (sl == 1) {
+					checkingClients[l - 1].withdraw();
+					goto edit;
+				}
+				else if (sl == 2) {
+					checkingClients[l - 1].writeCheck();
+					goto edit;
+				}
+				else if (sl == 3) {
+					checkingClients[l - 1].deposit();
+				}
+				else if (sl == 0) {
+					goto home;
+				}
+			}
+			else if (clients[l - 1].getAccountType() == "SAVINGS") {
+				int sl = 0;
+				cout << "  ^-_[1]Withdraw" << "  ^-_[2]Deposit" << "  ^-_[0] Return to Homepage";
+				cout << endl << "Selection: ";
+				cin >> sl;
+				if (sl == 1) {
+					savingsClients[l - 1].withdraw();
+					goto edit;
+				}
+				else if (sl == 2) {
+					savingsClients[l - 1].deposit();
+					goto edit;
+				}
+				else if (sl == 0) {
+					goto home;
+				}
+
+				goto edit;
+			}
+		}
 
 
 
